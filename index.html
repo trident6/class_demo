@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Define an array of objects with the fields you want to sort by
+const data = [
+{date:'2022-01-01', time: '10:00:00', name: 'John', email: 'john@example.com'},
+{date: '2022-01-02', time: '09:30:00', name: 'Jane', email: 'jane@example.com'},
+{date: '2022-01-01', time: '11:00:00', name: 'Sarah', email: 'sarah@example.com'},
+{date: '2022-01-03', time: '12:00:00', name: 'Bob', email: 'bob@example.com'},
+{date: '2022-01-02', time: '10:30:00', name: 'Alice', email: 'alice@example.com'},
+{date: '2022-01-01', time: '10:30:00', name: 'Dave', email: 'john@example.com'}
+];
+// Sort the data by date, time, name, and email
+data.sort((a, b) => {
+if (a.email !== b.email) {
+return a.email.localeCompare(b.email);
+} else if (a.date !== b.date) {
+return a.date.localeCompare(b.date);
+} else if (a.time !== b.time) {
+return a.time.localeCompare(b.time);
+} else {
+return a.name.localeCompare(b.name);
+}
+});
+// Remove duplicate entries based on the email field
+const uniqueData = [];
+const uniqueEmails = new Set();
+for (const item of data) {
+if (!uniqueEmails.has(item.email)) {
+uniqueData.push(item);
+uniqueEmails.add(item.email);
+}
+}
+
+// Log the sorted and de-duplicated data to the console
+console.log(uniqueData);
+    </script>
+    
+</body>
+</html>
